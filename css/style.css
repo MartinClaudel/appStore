@@ -1,0 +1,68 @@
+/* 
+    Created on : Dec 31, 2018, 9:45:48 PM
+    Author     : Yorn
+*/
+
+html,body{
+	padding: 0;
+	margin: 0;
+}
+
+
+body{
+    position:relative;
+    top: 7vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header{
+    position:fixed;
+    top:0;
+    height:7vh;
+    width:100%;
+    background-color: white;
+    box-shadow: -1px 0px 8px 0px black;
+    z-index: 9001;
+    align-self:flex-end;
+}
+
+
+#sidebar{
+    width: 50vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    background-color: rgb(240,240,240);
+    z-index: 9000;
+    transition: all 0.6s;
+}
+
+#overlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left:0;
+    background-color: rgb(0,0,0,0.4);
+    z-index: 8999;
+    display: none;
+    cursor: pointer;    
+}
+
+#sidebar>*{
+    position:relative;
+    top:7vh;
+    padding: 30px;
+}
+
+#pageChanger{
+    position: fixed;
+    z-index: 9999;
+    width: 0;
+    left:100vw;
+    background-color: purple;
+    transition : all 0.6s;
+}
