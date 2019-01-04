@@ -3,18 +3,20 @@
     Author     : Yorn
 */
 
-html,body{
-	padding: 0;
-	margin: 0;
+html{
+    margin: 0;
+    min-height: 100vh;
 }
 
 
 body{
+    margin:0;
     position:relative;
-    top: 7vh;
+    min-height: 93vh;
+    padding-top:7vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    
 }
 
 header{
@@ -28,16 +30,30 @@ header{
     align-self:flex-end;
 }
 
+main{
+    background-color:white;
+    min-height: 83vh;
+}
+
+footer{
+    height:10vh;
+    background-color:green;
+}
+
 
 #sidebar{
     width: 50vw;
     height: 100vh;
     position: fixed;
     top: 0;
-    left: 100vw;
+    left: 50vw;
     background-color: rgb(240,240,240);
     z-index: 9000;
     transition: all 0.6s;
+}
+
+#sidebar.offScreen{
+    left: 100vw;
 }
 
 #overlay{
@@ -48,8 +64,11 @@ header{
     left:0;
     background-color: rgb(0,0,0,0.4);
     z-index: 8999;
-    display: none;
     cursor: pointer;    
+}
+
+#overlay.hidden{
+    display:none;
 }
 
 #sidebar>*{
@@ -65,4 +84,66 @@ header{
     left:100vw;
     background-color: purple;
     transition : all 0.6s;
+}
+
+
+#adminboard{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#adminboard>div{
+    width: 50%;
+    padding:30px;
+}
+
+
+
+
+
+.app_list>a{
+    display:block;
+}
+
+.app_list.board{
+    background: #EFEFEF;
+}
+
+app_edit{
+}
+
+#adminboard .app{
+    
+}
+
+/* App form style */
+
+#form_overlay{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#form_overlay.hidden{
+    display:none;
+}
+
+#form_overlay form{
+    width:1000px;
+    height:700px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    z-index: 9005;
+    
 }
