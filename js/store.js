@@ -28,7 +28,7 @@ window.onload = function () {
             if (e.target.parentElement.classList.contains('app_link')) {
                 toggleClass(overlay, 'hidden');
                 toggleClass(sidebar, 'offScreen');
-                printApp(splited[splited.length-1], sidebar);
+                printApp(splited[splited.length-1], sidebar,false);
             }
         });
     }

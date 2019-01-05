@@ -21,8 +21,11 @@ function loadPage(link) {
 
 
 
-function printApp(id,target){
-    loadData('index.php?controller=app&action=read&id='+id,target);
+function printApp(id,target,editable){
+    if(editable)
+        loadData('index.php?controller=app&action=read&id='+id+'&edit=true',target);
+    else
+        loadData('index.php?controller=app&action=read&id='+id,target);
 }
 
 /**
@@ -30,7 +33,7 @@ function printApp(id,target){
  * Sends a request to the server using GET
  * Put the output's data into @target
  * 
- * @param string link
+ * @param string link 
  * @param HTMLElement target
  * 
  */

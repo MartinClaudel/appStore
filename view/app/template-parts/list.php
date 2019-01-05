@@ -4,4 +4,5 @@
                         . '<div class="app"><img src="'.$img_link.'" width="100px" height="100px">'
                         .'<span>'.$app->get('name').'</span>'
                         . '</div></a>';
-            } ?>
+            }
+            ?>

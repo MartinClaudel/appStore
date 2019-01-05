@@ -68,7 +68,7 @@ class Model {
         }
     }
     
-     public function update($data) {
+     public static function update($data) {
         $table_name = ucfirst(static::$object);
         $primary = static::$primary;
         $statements = array();
@@ -76,26 +76,20 @@ class Model {
         foreach ($data as $key => $p) {
             if (isset($data[$key]) && !is_null($data[$key]) && strlen($p) > 0) {//si initialisé et  non null et longeur supérieur à zéro
                 $statements[] = "$key=:$key";
-                $values[$key] = $data[$key];
             }
         }
-        $values['id'] = $this->get('id');
-        $sql = "UPDATE {$table_name} SET " . implode(",", $statements) . " WHERE {$primary}=:id";
-
+        $values['id'] = $data[$primary];
+        $sql = "UPDATE {$table_name} SET " . implode(",", $statements) . " WHERE {$primary}=:{$primary}";
+        var_dump($sql);
         try {
             $req_prep = self::$pdo->prepare($sql);
-            $req_prep->execute($values);
+            $req_prep->execute($data);
             return true;
         } catch (PDOException $e) {
             //if Conf::debug is true, then show the message
             if (Conf::getDebug()) {
                 echo $e->getMessage();
             }
-            //else, just pretend nothing happened
-            else {
-                echo 'De quoi un crash serveur ? j\'ai rien vu moi';
-            }
-            die();
         }
     }
 

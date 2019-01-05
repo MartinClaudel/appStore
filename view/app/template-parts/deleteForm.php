@@ -1,0 +1,2 @@
+<h4>Etes-vous sûr  de vouloir supprimer l'application <?php echo $_GET['id']?> ? Aucun retour en arrière ne sera possible</h4>
+<a href="index.php?controllerapp&action=deleted&id=<?php echo $_GET['id']?>" >Oui</a> <a href="index.php?delete" >Non</a>

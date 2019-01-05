@@ -13,6 +13,7 @@ class controllerApp {
 
     public static function read() {
         $app = App::select($_GET['id']);
+        var_dump($_GET['id']);
         require_once Util::build_path(array('view', 'app', 'template-parts', 'detail.php'));
     }
 
@@ -24,9 +25,7 @@ class controllerApp {
     }
     
     public static function create(){
-        $view='updateForm';
         $action="created";
-        $controller='app';
         $keyword='action';
         require_once Util::build_path(array('view','app','template-parts','updateForm.php'));
     }
@@ -34,7 +33,7 @@ class controllerApp {
     public static function created(){
         
         $success=App::save(array(
-                "ID"=> substr(md5(uniqid("ID", true)),0,25),
+                "ID"=> substr(md5(uniqid("IDA", true)),0,25),
                 "pckg"=>$_POST['package'],
                 "OS"=>$_POST['OS'],
                 "ver"=>$_POST['version'],
@@ -49,11 +48,13 @@ class controllerApp {
         $action='updated';
         $keyword="Mettre à jour";
         $app=App::select($_GET['id']);
+        $button_label="mettre à jour";
+        require_once Util::build_path(array('view','app','template-parts','updateForm.php'));
     }
     
     public static function updated(){
        $success=App::update(array(
-                "ID"=> substr(md5(uniqid("ID", true)),0,25),
+                "ID"=> $_POST['id'],
                 "pckg"=>$_POST['package'],
                 "OS"=>$_POST['OS'],
                 "ver"=>$_POST['version'],
@@ -61,7 +62,14 @@ class controllerApp {
                 "description"=>$_POST['description'],
                 "image_link"=> isset($_POST['image_link']) ? $_POST['image_link'] :     NULL
                 ));
-        return $success;
+    }
+    
+    public static function delete(){
+        require_once Util::build_path(array('view','app','template-parts','deleteForm.php'));
+    }
+    
+    public static function deleted(){
+        App::delete($_GET['id']);
     }
 
 }
