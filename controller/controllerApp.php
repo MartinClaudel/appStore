@@ -12,7 +12,6 @@ class controllerApp {
 
     public static function read() {
         $app = App::select($_GET['id']);
-        var_dump($_GET['id']);
         require_once Util::build_path(array('view', 'app', 'template-parts', 'detail.php'));
     }
 
@@ -20,6 +19,7 @@ class controllerApp {
         $arr = App::selectAll();
         $view = 'board';
         $controller = 'app';
+        $pagetitle='Board';
         require_once Util::build_path(array('view', 'view.php'));
     }
     
@@ -27,6 +27,7 @@ class controllerApp {
         $arr = App::selectAll();
         $view = 'store';
         $controller = 'app';
+        $pagetitle='Store';
         require_once Util::build_path(array('view', 'view.php'));
     }
 
@@ -86,11 +87,11 @@ class controllerApp {
     }
 
     public static function addAppCategory() {
-        Model::addApptoCategory($_GET['a'], $_GET['c']);
+        App::addApptoCategory($_GET['a'], $_GET['c']);
     }
 
     public static function removeAppCategory() {
-        
+       App::removeAppfromCategory($_GET['a'], $_GET['c']);
     }
 
 }

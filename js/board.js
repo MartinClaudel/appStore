@@ -16,8 +16,9 @@ window.onload = function () {
     var formOverlay = document.getElementById("form_overlay");
     var overlay = document.getElementById("overlay");
     var appCategories = document.getElementById("app_categories");
-    var categoriesToAdd();
-    var addCtoA;
+    var categoriesLabels;
+    var addCategoryButton;
+    var categoriesToAdd;
     var actionLinks;
     var form;
     var currentAppId;
@@ -65,8 +66,8 @@ window.onload = function () {
                    if(success){
                       toggleClass(overlay, 'hidden');
                       toggleClass(formOverlay, 'hidden');
-                      printAppBoard(currentAppId);
                       printAppList();
+                      if(currentAppId!==undefined)printAppBoard(currentAppId);
                    }
                }); 
             });
@@ -95,19 +96,53 @@ window.onload = function () {
 }
 
 function printAppBoard(id){
-                printApp(id, appDetail, true, function () {
-                actionLinks = document.getElementsByClassName("action_link");
-                for (var j = 0; j < actionLinks.length; j++) {
-                    actionLinks[j].addEventListener('click', function (e) {
-                        e.preventDefault();
-                        printForm(this.getAttribute("href"));
-                    });
-                }
+    printApp(id, appDetail, true, function () {
+        actionLinks = document.getElementsByClassName("action_link");
+        for (var j = 0; j < actionLinks.length; j++) {
+            actionLinks[j].addEventListener('click', function (e) {
+                e.preventDefault();
+                printForm(this.getAttribute("href"));
             });
+        }
+    });
             
-        printAppCategories(id,appCategories,true,function(){
-            
+     
+    printAppCategories(id,appCategories,true,function(){
+    
+        categoriesLabels=document.getElementsByClassName("category_label");
+        var cl;
+        for(var i=0;i<categoriesLabels.length;i++){
+            cl=categoriesLabels[i].getElementsByTagName("a");
+            console.log(cl);
+            cl[0].addEventListener('click',function(e){
+               e.preventDefault();
+               printForm(this.getAttribute("href"));
+            });
+            cl[1].addEventListener('click',function(e){
+               e.preventDefault();
+               console.log("delete");
+               loadData(this.getAttribute("href"),function(){
+                   printAppBoard(currentAppId);
+               });
+            });
+        }   
+        
+        //Add a category to the app
+        addCategoryButton=document.getElementById("add_category");
+        addCategoryButton.addEventListener('click',function(e){
+            e.preventDefault();
+            toggleClass(this.getElementsByTagName('div')[0],'hidden');
         });
+        categoriesToAdd=document.getElementsByClassName("category_to_add");
+        for(var i=0;i<categoriesToAdd.length;i++){
+            categoriesToAdd[i].addEventListener('click',function(e){
+               e.preventDefault();
+               loadData(this.getAttribute("href"),function(){
+                  printAppBoard(currentAppId); 
+               });
+            });  
+        }
+    });
 }
 
 

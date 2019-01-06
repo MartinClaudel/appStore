@@ -4,19 +4,6 @@
  * and open the template in the editor.
  */
 
-function loadPage(link) {
-    var request = new XMLHttpRequest();
-    pageChanger.style.left = 0;
-    pageChanger.style.width = "100vw";
-    request.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            document.getElementsByTagName('main')[0].innerHTML = this.responseText;
-        }
-    };
-    request.open("GET", link);
-    request.send();
-}
-
 function printApp(id,target,editable,callback){
         loadData('index.php?controller=app&action=read&id='+id +((editable)? '&edit=true' : ''),function(data){
             target.innerHTML=data;

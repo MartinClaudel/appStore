@@ -58,4 +58,19 @@ class App extends Model{
         }
     }
     
+        public static function removeAppfromCategory($appID,$categoryID){
+        $sql = "DELETE FROM appbycategory WHERE appID=:appID AND categoryID=:categoryID";
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+            $req_prep->execute(array(
+                'appID' => $appID,
+                'categoryID' => $categoryID
+            ));
+            return true;
+        } catch (PDOException $e) {
+            if (Conf::getDebug()) echo $e;
+            return false;
+        }
+    }
+    
 }

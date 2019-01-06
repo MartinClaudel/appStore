@@ -25,17 +25,13 @@ window.onload = function () {
         appList[i].addEventListener('click', function (e){
             e.preventDefault();
             var splited=this.getAttribute("href").split('/');
-            if (e.target.parentElement.classList.contains('app_link')) {
-                toggleClass(overlay, 'hidden');
-                toggleClass(sidebar, 'offScreen');
-                printApp(splited[splited.length-1], sidebar,false);
-            }
+            toggleClass(overlay, 'hidden');
+            toggleClass(sidebar, 'offScreen');
+            printApp(splited[splited.length-1], sidebar,false);
         });
     }
     
-    header.addEventListener('click', function (e) {
-        loadPage(e.target.getAttribute("data_url"));
-    });
+
     overlay.addEventListener('click', function (e) {
         toggleClass(overlay, 'hidden');
         toggleClass(sidebar, 'offScreen');

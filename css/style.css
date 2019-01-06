@@ -16,7 +16,7 @@ body{
     padding-top:7vh;
     display: flex;
     flex-direction: column;
-    
+    background-color: rgb(240,240,240);
 }
 
 header{
@@ -31,7 +31,6 @@ header{
 }
 
 main{
-    background-color:white;
     min-height: 83vh;
 }
 
@@ -40,21 +39,6 @@ footer{
     background-color:green;
 }
 
-
-#sidebar{
-    width: 50vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 50vw;
-    background-color: rgb(240,240,240);
-    z-index: 9000;
-    transition: all 0.6s;
-}
-
-#sidebar.offScreen{
-    left: 100vw;
-}
 
 #overlay{
     width: 100vw;
@@ -71,20 +55,11 @@ footer{
     display:none;
 }
 
-#sidebar>*{
-    position:relative;
-    top:7vh;
-    padding: 30px;
-}
 
-#pageChanger{
-    position: fixed;
-    z-index: 9999;
-    width: 0;
-    left:100vw;
-    background-color: purple;
-    transition : all 0.6s;
-}
+
+
+
+/*Boards style*/
 
 
 #adminboard{
@@ -147,6 +122,14 @@ app_edit{
 }
 
 
+
+
+
+
+
+
+
+
 /* App form style */
 
 #form_overlay{
@@ -184,4 +167,91 @@ app_edit{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+
+#add_category>div{
+    display:block;
+    position:absolute;
+    background-color:rgb(240,240,240);
+    border:1px solid grey;
+    display:flex;
+    flex-direction: column;
+    width:150px;
+    height:200px;
+    overflow: scroll;
+}
+
+#add_category>div a{
+    display:block;
+    padding:20px;
+    background-color:rgb(230,230,230);
+    transition:all 0.4s;
+}
+
+#add_category>div a:hover{
+    background-color:rgb(210,210,210);
+}
+
+#add_category>div.hidden{
+    display:none;
+}
+
+
+
+/* Store style */
+
+#sidebar{
+    width: 50vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 50vw;
+    background-color: rgb(240,240,240);
+    z-index: 9000;
+    transition: all 0.4s;
+}
+
+#sidebar.offScreen{
+    left: 100vw;
+}
+
+#sidebar>*{
+    position:relative;
+    top:7vh;
+    padding: 30px;
+}
+
+
+.app_list.store {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position:relative;
+    top:6vh;
+}
+
+.app_list.store .app{
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app_list.store .app{
+   border-radius: 5px;
+   -moz-box-shadow: 0 0 5px #000000;
+   -webkit-box-shadow: 0 0 5px #000000;
+   box-shadow: 0 0 5px #000000;
+}
+
+
+.app_list.store span{
+    padding: 20px 0px;
+}
+
+.app_list.store .app img{
+   height:150px;
+   width:150px;
 }
