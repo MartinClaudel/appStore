@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-
-
 function loadPage(link) {
     var request = new XMLHttpRequest();
     pageChanger.style.left = 0;
@@ -19,13 +17,22 @@ function loadPage(link) {
     request.send();
 }
 
+function printApp(id,target,editable,callback){
+        loadData('index.php?controller=app&action=read&id='+id +((editable)? '&edit=true' : ''),function(data){
+            target.innerHTML=data;
+            if(callback !==undefined){
+                callback();
+            }
+        });
+}
 
-
-function printApp(id,target,editable){
-    if(editable)
-        loadData('index.php?controller=app&action=read&id='+id+'&edit=true',target);
-    else
-        loadData('index.php?controller=app&action=read&id='+id,target);
+function printAppCategories(id,target,editable,callback){
+        loadData('index.php?controller=app&action=readAppCategories&id='+id +((editable)? '&edit=true' : ''),function(data){
+            target.innerHTML=data;
+            if(callback !==undefined){
+                callback();
+            }
+        });
 }
 
 /**
@@ -37,11 +44,11 @@ function printApp(id,target,editable){
  * @param HTMLElement target
  * 
  */
-function loadData(link, target) {
+function loadData(link, callback) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            target.innerHTML = this.responseText;
+            callback(this.responseText);
         }
     };
     request.open("GET", link);
@@ -58,16 +65,16 @@ function loadData(link, target) {
  * @param HTMLObject target
  * @returns int
  */
-function sendFormData(link, form,target){
+function sendFormData(link, form,callback){
     var request = new XMLHttpRequest();
     var formData= new FormData(form);
    
     request.addEventListener("load", function(event) {
-      return 0;
+      callback(true);
     });
    
     request.addEventListener("error", function(event) {
-      return -1;
+      callback(false);
     });
    
     request.open("POST", link);

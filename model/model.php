@@ -2,7 +2,7 @@
 
 class Model {
 
-    private static $pdo;
+    public static $pdo;
 
     public static function Init() {
         try {

@@ -1,14 +1,13 @@
 <?php
 
 require_once Util::build_path(array('model', 'modelApp.php'));
+require_once Util::build_path(array('model', 'modelCategory.php'));
 
 class controllerApp {
 
     public static function readAll() {
         $arr = App::selectAll();
-        $view = 'store';
-        $controller = 'app';
-        require_once Util::build_path(array('view', 'view.php'));
+        require_once Util::build_path(array('view','app','template-parts','list.php'));
     }
 
     public static function read() {
@@ -24,52 +23,74 @@ class controllerApp {
         require_once Util::build_path(array('view', 'view.php'));
     }
     
-    public static function create(){
-        $action="created";
-        $keyword='action';
-        require_once Util::build_path(array('view','app','template-parts','updateForm.php'));
+    public static function store(){
+        $arr = App::selectAll();
+        $view = 'store';
+        $controller = 'app';
+        require_once Util::build_path(array('view', 'view.php'));
     }
-    
-    public static function created(){
-        
-        $success=App::save(array(
-                "ID"=> substr(md5(uniqid("IDA", true)),0,25),
-                "pckg"=>$_POST['package'],
-                "OS"=>$_POST['OS'],
-                "ver"=>$_POST['version'],
-                "name"=>$_POST['nom'],
-                "description"=>$_POST['description'],
-                "image_link"=> isset($_POST['image_link']) ? $_POST['image_link'] :     NULL
-                ));
+
+    public static function create() {
+        $action = "created";
+        $keyword = 'Créer';
+        require_once Util::build_path(array('view', 'app', 'template-parts', 'updateForm.php'));
+    }
+
+    public static function created() {
+
+        $success = App::save(array(
+                    "ID" => substr(md5(uniqid("IDA", true)), 0, 25),
+                    "pckg" => $_POST['package'],
+                    "OS" => $_POST['OS'],
+                    "ver" => $_POST['version'],
+                    "name" => $_POST['nom'],
+                    "description" => $_POST['description'],
+                    "image_link" => isset($_POST['image_link']) ? $_POST['image_link'] : NULL
+        ));
         return $success;
     }
-    
-    public static function update(){
-        $action='updated';
-        $keyword="Mettre à jour";
-        $app=App::select($_GET['id']);
-        $button_label="mettre à jour";
-        require_once Util::build_path(array('view','app','template-parts','updateForm.php'));
+
+    public static function update() {
+        $action = 'updated';
+        $keyword = "Mettre à jour";
+        $app = App::select($_GET['id']);
+        $button_label = "mettre à jour";
+        require_once Util::build_path(array('view', 'app', 'template-parts', 'updateForm.php'));
     }
-    
-    public static function updated(){
-       $success=App::update(array(
-                "ID"=> $_POST['id'],
-                "pckg"=>$_POST['package'],
-                "OS"=>$_POST['OS'],
-                "ver"=>$_POST['version'],
-                "name"=>$_POST['nom'],
-                "description"=>$_POST['description'],
-                "image_link"=> isset($_POST['image_link']) ? $_POST['image_link'] :     NULL
-                ));
+
+    public static function updated() {
+        $success = App::update(array(
+                    "ID" => $_POST['id'],
+                    "pckg" => $_POST['package'],
+                    "OS" => $_POST['OS'],
+                    "ver" => $_POST['version'],
+                    "name" => $_POST['nom'],
+                    "description" => $_POST['description'],
+                    "image_link" => isset($_POST['image_link']) ? $_POST['image_link'] : NULL
+        ));
     }
-    
-    public static function delete(){
-        require_once Util::build_path(array('view','app','template-parts','deleteForm.php'));
+
+    public static function delete() {
+        require_once Util::build_path(array('view', 'app', 'template-parts', 'deleteForm.php'));
     }
-    
-    public static function deleted(){
+
+    public static function deleted() {
         App::delete($_GET['id']);
+    }
+
+    public static function readAppCategories() {
+        $categoriesByApp = App::selectCategoriesByAppId($_GET['id']);
+        $categories=Category::selectAll();
+        $editable = true;
+        require Util::build_path(array('view', 'category', 'template-parts', 'list.php'));
+    }
+
+    public static function addAppCategory() {
+        Model::addApptoCategory($_GET['a'], $_GET['c']);
+    }
+
+    public static function removeAppCategory() {
+        
     }
 
 }

@@ -29,5 +29,33 @@ class App extends Model{
         return $this->$key;
     }
     
+    public static function selectCategoriesByAppId($appID){
+        $sql = "SELECT c.* FROM category c JOIN appbycategory ca ON c.ID=ca.categoryID WHERE ca.appID=:id";
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+            $req_prep->execute(array(
+                'id' => $appID
+            ));
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Category');
+            return $req_prep->fetchAll();
+        } catch (PDOException $e) {
+            if (Conf::getDebug()) echo $e;
+        }
+    }
+    
+    public static function addApptoCategory($appID,$categoryID){
+        $sql = "INSERT INTO appbycategory (appID,categoryID) VALUES(:appID,:categoryID)";
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+            $req_prep->execute(array(
+                'appID' => $appID,
+                'categoryID' => $categoryID
+            ));
+            return true;
+        } catch (PDOException $e) {
+            if (Conf::getDebug()) echo $e;
+            return false;
+        }
+    }
     
 }

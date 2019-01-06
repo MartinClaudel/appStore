@@ -10,6 +10,11 @@ require_once Util::build_path(array('model', 'modelCategory.php'));
 
 class controllerCategory{
     
+    public static function readAll(){
+        $catgeories=Category::selectAll();
+        require Util::build_path(array('view','category','template-parts','list.php'));
+    }
+    
     public static function create(){
         $action="created";
         $keyword='Créer';
@@ -23,5 +28,4 @@ class controllerCategory{
             "OS"=>$_POST['OS'])
                );
     }
-    
 }

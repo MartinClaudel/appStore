@@ -1,7 +1,7 @@
 <?php
 
 $controller = !isset($_GET['controller']) || is_null($_GET['controller']) ? 'app' : $_GET['controller'];
-$action = !isset($_GET['action']) || is_null($_GET['action']) ? 'readAll' : $_GET['action'];
+$action = !isset($_GET['action']) || is_null($_GET['action']) ? 'store' : $_GET['action'];
 
 $controllerClass = 'controller' . ucfirst($controller);
 

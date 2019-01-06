@@ -1,4 +1,4 @@
-<form method="post" action="index.php?controller=category&action=<?php echo $action ?>">
+<form class="form_action" method="post" action="index.php?controller=category&action=<?php echo $action ?>">
 
     <label>Nom de la catégorie</label>
     <input name="nom" type="text" required="champ requis" value="<?php if (isset($app)) echo htmlspecialchars($app->get('name')); ?>" >

@@ -13,5 +13,4 @@
         <a href="index.php?controller=app&action=update&id=<?php echo $app->get("ID") ?>" class="action_link">Modifier</a>
         <a href="index.php?controller=app&action=delete&id=<?php echo $app->get("ID") ?>" class="action_link">Supprimer</a>
     <?php endif; ?>
-
 </div>

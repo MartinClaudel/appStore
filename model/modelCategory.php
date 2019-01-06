@@ -17,4 +17,8 @@ class Category extends Model{
         }
     }
     
+    public function get($attrib){
+        return $this->$attrib;
+    }
+    
 }
