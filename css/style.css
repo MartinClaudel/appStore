@@ -17,10 +17,14 @@ body{
     display: flex;
     flex-direction: column;
     background-color: rgb(240,240,240);
+    font-family: 'Lato', sans-serif;
 }
 
 header{
     position:fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     top:0;
     height:7vh;
     width:100%;
@@ -28,7 +32,21 @@ header{
     box-shadow: -1px 0px 8px 0px black;
     z-index: 9001;
     align-self:flex-end;
+    
 }
+
+header a{
+    padding: 0px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color:grey;
+    transition: all 0.3s;
+}
+
+header a:hover{
+    padding: 0px 20px;
+}
+
 
 main{
     min-height: 83vh;
@@ -37,6 +55,9 @@ main{
 footer{
     height:10vh;
     background-color:green;
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
 }
 
 
@@ -75,23 +96,53 @@ footer{
     padding:30px;
 }
 
-
-
-
-
 .app_list>a{
     display:block;
+    position:relative;
+    background-color: white;
+    margin: 10px 0px;
+    border-radius:8px;
+    justify-content: center;
+    text-decoration: none;
+}
+.app_list .app{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
 }
 
+.app_list>a span{
+    display:block;
+    margin: 0px 40px;
+}
+
+.app_list>a span:nth-child(3){
+    position: absolute;
+    left:70%;
+}
+
+.app_list>a span:nth-child(4){
+   
+    position: absolute;
+    left:50%;
+}
+
+
 .app_list.board{
-    background: #EFEFEF;
+    background-color: rgb(200,200,200);
+    max-height: 70vh;
+    overflow :scroll;
+    margin:20px;
+    border-radius: 5px;
 }
 
 app_edit{
 }
 
-#adminboard .app{
-    
+#adminboard img{
+    width:100px;
+    height:100px;
 }
 
 
@@ -120,13 +171,6 @@ app_edit{
     border-color:#1e7f34;
     background-color:#1e7f34; 
 }
-
-
-
-
-
-
-
 
 
 

@@ -20,4 +20,8 @@ class Util{
         return $path.$DS. join($DS, $arr);
     }
     
+    public static function build_relative_path($arr){
+        $DS=DIRECTORY_SEPARATOR;
+        return join($DS, $arr);
+    }
 }

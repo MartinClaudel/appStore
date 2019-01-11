@@ -1,5 +1,5 @@
 <div id="app_detail">
-    <img class="app_thumbnail" src="<?php $img_link = (is_null($app->get('image_link')) ? "img" . DIRECTORY_SEPARATOR . "placeholder.png" : $app->get('image_link'));echo $img_link;?>" width="50px" height="50px">
+    <img class="app_thumbnail" src="<?php $img_link = (is_null($app->get('image_link')) ? Util::build_relative_path(array('ressources','img','placeholder.png')) : $app->get('image_link'));echo $img_link;?>" width="50px" height="50px">
     <div class="app_summary">
         <span><?php echo $app->get("name") ?></span>
         <span><?php echo $app->get("OS") ?></span>
