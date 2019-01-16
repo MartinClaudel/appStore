@@ -30,6 +30,7 @@ window.onload = function () {
                 var splited = this.getAttribute("href").split('/');
                 currentAppId=splited[splited.length - 1];
                 printAppBoard(currentAppId);
+                if(window.innerWidth<838) scrollBy(0,window.innerHeight-50);
 
             });
         }
@@ -75,7 +76,6 @@ window.onload = function () {
             var confirm=document.getElementById("confirm_deletion");
             var cancel=document.getElementById("cancel_deletion");
 
-            console.log(confirm);
 
            if(confirm !== undefined && cancel!==undefined){
               confirm.addEventListener('click',function(e){
@@ -113,14 +113,12 @@ function printAppBoard(id){
         var cl;
         for(var i=0;i<categoriesLabels.length;i++){
             cl=categoriesLabels[i].getElementsByTagName("a");
-            console.log(cl);
             cl[0].addEventListener('click',function(e){
                e.preventDefault();
                printForm(this.getAttribute("href"));
             });
             cl[1].addEventListener('click',function(e){
                e.preventDefault();
-               console.log("delete");
                loadData(this.getAttribute("href"),function(){
                    printAppBoard(currentAppId);
                });

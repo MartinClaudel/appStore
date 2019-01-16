@@ -11,7 +11,7 @@ require_once Util::build_path(array('model', 'modelCategory.php'));
 class controllerCategory{
     
     public static function readAll(){
-        $catgeories=Category::selectAll();
+        $categories=Category::selectAll();
         require Util::build_path(array('view','category','template-parts','list.php'));
     }
     

@@ -46,7 +46,7 @@ class controllerApp {
                     "ver" => $_POST['version'],
                     "name" => $_POST['nom'],
                     "description" => $_POST['description'],
-                    "image_link" => isset($_POST['image_link']) ? $_POST['image_link'] : NULL
+                    "image_link" => isset($_POST['ImageLink']) ? $_POST['ImageLink'] : NULL
         ));
         return $success;
     }
@@ -67,7 +67,7 @@ class controllerApp {
                     "ver" => $_POST['version'],
                     "name" => $_POST['nom'],
                     "description" => $_POST['description'],
-                    "image_link" => isset($_POST['image_link']) ? $_POST['image_link'] : NULL
+                    "image_link" => isset($_POST['ImageLink']) ? $_POST['ImageLink'] : NULL
         ));
     }
 
@@ -82,10 +82,14 @@ class controllerApp {
     public static function readAppCategories() {
         $categoriesByApp = App::selectCategoriesByAppId($_GET['id']);
         $categories=Category::selectAll();
-        $editable = true;
+        $editable = (isset($_GET['edit']) && !is_null($_GET['edit'])) ? $_GET['edit'] : false ;
         require Util::build_path(array('view', 'category', 'template-parts', 'list.php'));
     }
 
+    public static function readAppByCategories(){
+        
+    }
+    
     public static function addAppCategory() {
         App::addApptoCategory($_GET['a'], $_GET['c']);
     }
