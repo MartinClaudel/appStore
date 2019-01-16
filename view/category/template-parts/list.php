@@ -5,7 +5,8 @@
 
     foreach ($categoriesByApp as $c){
         echo '<span class="category_label">'
-        . '<a href="index.php?controller=category&action=update&c='.$c->get('ID').'">'.$c->get('name').' '
+        . '<a href="'.($editable ? 'index.php?controller=category&action=update&c='.$c->get('ID') : '#') . '">'
+        .$c->get('name')
         .($editable ? '<i class="material-icons">edit</i>' : '')
         . '</a>'
         .($editable ? '<a href="index.php?controller=app&action=removeAppCategory&a='.$_GET['id'].'&c='.$c->get('ID').'"> X </a>' : '')        

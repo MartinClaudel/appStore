@@ -88,7 +88,7 @@ window.onload = function () {
             var cancel = document.getElementById("cancel_deletion");
 
 
-            if (confirm !== undefined && cancel !== undefined) {
+            if (confirm !==null && confirm !== undefined && cancel !== undefined) {
                 confirm.addEventListener('click', function (e) {
                     e.preventDefault();
                     loadData(confirm.getAttribute("href"), function () {

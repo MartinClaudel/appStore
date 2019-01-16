@@ -41,7 +41,6 @@ class controllerCategory {
      */
     public static function update() {
         $category = Category::select($_GET['c']);
-        var_dump($_GET);
         $action = 'updated';
         $keyword = 'Enregistrer';
         require_once Util::build_path(array('view', 'category', 'template-parts', 'updateForm.php'));
