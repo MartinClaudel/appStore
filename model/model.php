@@ -44,7 +44,7 @@ class Model {
 
         public static function save($data) {
 
-        $table_name = ucfirst(static::$object);
+        $table_name = static::$object;
         $statements = array();
         foreach ($data as $key => $p) {
             if (isset($data[$key]) && !is_null($data[$key]) && strlen($p) > 0) {
@@ -69,7 +69,7 @@ class Model {
     }
     
      public static function update($data) {
-        $table_name = ucfirst(static::$object);
+        $table_name = static::$object;
         $primary = static::$primary;
         $statements = array();
         $values = array();
@@ -95,7 +95,7 @@ class Model {
 
     //delete an $object
     public static function delete($id) {
-        $table_name = ucfirst(static::$object);
+        $table_name = static::$object;
         $primary = static::$primary;
         $sql = "DELETE FROM {$table_name}  WHERE {$primary}=:id";
         try {

@@ -54,10 +54,12 @@ main{
 
 footer{
     height:10vh;
-    background-color:green;
     display:flex;
+    background-color: rgb(220,220,220);
     justify-content: space-around;
     align-items:center;
+    color:rgb(130,130,130);
+    font-weight: bold;
 }
 
 
@@ -77,6 +79,71 @@ footer{
 }
 
 
+
+
+
+/* App detail */
+
+
+#app_detail a{
+	color: grey;
+	text-decoration: none;
+	font-size: 1.2em;
+}
+
+.app_summary{
+	display: flex;
+	flex-direction: column;
+}
+
+.app_summary .name{
+	font-weight: bold;
+	font-size: 1.2em;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+.app_summary .OS{
+	font-size: 1.1em;
+}
+
+#add_category{
+    position: relative;
+	cursor: pointer;
+    font-size: 1.3em;
+}
+
+#add_category>div{
+    display:block;
+    position:absolute;
+    background-color:rgb(240,240,240);
+    border:1px solid grey;
+    display:flex;
+    flex-direction: column;
+    width:150px;
+    height:20vh;
+    overflow: scroll;
+    z-index: 9995;
+}
+
+#add_category>div a{
+    display:block;
+    padding:10px;
+    color: grey;
+    text-decoration: none;
+    background-color:rgb(230,230,230);
+    transition:all 0.4s;
+}
+
+#add_category>div a:hover{
+    background-color:rgb(210,210,210);
+    color: rgb(40,40,40);
+}
+
+#add_category>div.hidden{
+    display:none;
+}
 
 
 
@@ -132,12 +199,44 @@ footer{
 .app_list.board{
     background-color: rgb(200,200,200);
     max-height: 70vh;
-    overflow :scroll;
+    overflow-y:scroll;
     margin:20px;
     border-radius: 5px;
 }
 
-app_edit{
+#app_edit>div{
+	height: 65vh;
+	overflow-y: scroll;
+	display:flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+#app_edit>span{
+	padding-top:10px;
+}
+
+#create_actions{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+#create_actions a{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	color: grey;
+	font-size: 1.3em;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+
+#create_actions a:hover{
+	color:rgb(20,20,20);
 }
 
 #adminboard img{
@@ -146,9 +245,24 @@ app_edit{
 }
 
 
+#app_categories>div{
+	display:flex;
+	flex-direction: column;
+}
+
+#app_categories>div{
+	display:flex;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
 
 .category_label{
+
+	display:flex;
+
 }
+
 .category_label a{
     background-color:#218838;
     color:white;
@@ -192,20 +306,22 @@ app_edit{
 }
 
 #form_overlay form{
-    width:1000px;
-    height:700px;
+    width:60vw;
+    height:80vh;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: red;
-    z-index: 9005;   
+    background-color: white;
+    border: 1px solid grey;
+    z-index: 9005;
+    overflow-y: scroll;
 }
 
 #form_overlay>div{
     z-index: 9005;
     background-color: white;
-    height:20vh;
+    height: 20vh;
     width: 30vw;
     display: flex;
     flex-direction: column;
@@ -213,34 +329,9 @@ app_edit{
     justify-content: center;
 }
 
-
-#add_category>div{
-    display:block;
-    position:absolute;
-    background-color:rgb(240,240,240);
-    border:1px solid grey;
-    display:flex;
-    flex-direction: column;
-    width:150px;
-    height:200px;
-    overflow: scroll;
+.form_description{
+	resize: none;
 }
-
-#add_category>div a{
-    display:block;
-    padding:20px;
-    background-color:rgb(230,230,230);
-    transition:all 0.4s;
-}
-
-#add_category>div a:hover{
-    background-color:rgb(210,210,210);
-}
-
-#add_category>div.hidden{
-    display:none;
-}
-
 
 
 /* Store style */
@@ -288,6 +379,8 @@ app_edit{
    -moz-box-shadow: 0 0 5px #000000;
    -webkit-box-shadow: 0 0 5px #000000;
    box-shadow: 0 0 5px #000000;
+   max-width: 150px;
+   height: 100%;
 }
 
 

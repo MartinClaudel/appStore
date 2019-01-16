@@ -61,7 +61,7 @@ window.onload = function () {
             formOverlay.innerHTML=data;
             form = document.getElementsByClassName("form_action")[0];
             form.addEventListener('submit',function(e){
-                e.preventDefault();
+               e.preventDefault();
                sendFormData(form.getAttribute('action'),form,function(success){
                    if(success){
                       toggleClass(overlay, 'hidden');
@@ -147,7 +147,7 @@ function printAppBoard(id){
 
 
 function printAppList(){
-    loadData("index.php?controller=app&action=readAll",function(data){
+    loadData("index.php?controller=app&action=readAll&edit=true",function(data){
         appList.innerHTML=data;
         initAppLinksListener();
     });

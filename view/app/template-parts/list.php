@@ -4,7 +4,7 @@
                         . '<div class="app"><img src="'.$img_link.'" >'
                         .'<span>'.$app->get('name').'</span>';
                 
-                if(isset($_GET['action']) && $_GET['action']=='board') 
+                if((isset($_GET['action']) && $_GET['action']=='board') || (isset($_GET['edit']) && $_GET['edit']=='true')) 
                     echo '<span>'.$app->get('pckg').'</span>'
                         . '<span>'.$app->get('ver').'</span>';
                 

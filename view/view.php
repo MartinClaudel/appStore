@@ -1,4 +1,4 @@
-<!DOCTYPE html [<!ATTLIST a data_url CDATA #IMPLIED>
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="css<?php echo DIRECTORY_SEPARATOR ?>style.css">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <title><?php echo $pagetitle ?></title>
     </head>
     <body>
