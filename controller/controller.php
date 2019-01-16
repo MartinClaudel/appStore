@@ -1,5 +1,6 @@
 <?php
 
+//If not defined, preparing default behaviors
 $controller = !isset($_GET['controller']) || is_null($_GET['controller']) ? 'app' : $_GET['controller'];
 $action = !isset($_GET['action']) || is_null($_GET['action']) ? 'store' : $_GET['action'];
 

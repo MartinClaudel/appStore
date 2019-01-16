@@ -4,12 +4,6 @@
 
 window.onload = function () {
 
-    var w = document.documentElement.clientWidth;
-
-    window.onresize = function () {
-        w = document.documentElement.clientWidth;
-    }
-
     var sidebar = document.getElementById("sidebar");
     var appList = document.getElementsByClassName("app_link");
     var overlay = document.getElementById("overlay");
@@ -23,11 +17,12 @@ window.onload = function () {
             toggleClass(overlay, 'hidden');
             toggleClass(sidebar, 'offScreen');
             printApp(splited[splited.length-1], sidebar.getElementsByTagName("div")[0],false);
-            printAppCategories(splited[splited.length-1], sidebar.getElementsByTagName("div")[1],false);
+            printAppCategories(splited[splited.length-1], sidebar.getElementsByClassName("app_categories")[0],false);
         });
     }
     
 
+    //Sidebar dislpay controller
     overlay.addEventListener('click', function (e) {
         toggleClass(overlay, 'hidden');
         toggleClass(sidebar, 'offScreen');

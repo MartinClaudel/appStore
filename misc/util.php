@@ -20,6 +20,12 @@ class Util{
         return $path.$DS. join($DS, $arr);
     }
     
+     /**
+     * Returns a relative path made from an array 
+     *  
+     * @param  array $arr The path elements
+     * @return string
+     */
     public static function build_relative_path($arr){
         $DS=DIRECTORY_SEPARATOR;
         return join($DS, $arr);

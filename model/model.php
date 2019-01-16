@@ -1,9 +1,15 @@
 <?php
 
+/**
+ * Contains all the functions interacting with the database
+ */
 class Model {
 
     public static $pdo;
 
+    /**
+     * Initialize a database connection as a PDO object
+     */
     public static function Init() {
         try {
             self::$pdo = new PDO("mysql:host=" . Conf::get("host") . ";dbname=" . Conf::get("dbname"), Conf::get("login"), Conf::get("psswd"), array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -15,6 +21,10 @@ class Model {
         }
     }
 
+    /**
+     * Returns all objects from a certain type
+     * @return array
+     */
     public static function selectAll() {
         $sql = "SELECT * FROM " . static::$object;
         try {
@@ -27,6 +37,12 @@ class Model {
         }
     }
 
+    /**
+     * Returns an object of a certain type by his id
+     *  
+     * @param  array $id The object's ID
+     * @return object
+     */
     public static function select($id) {
         $sql = "SELECT * FROM " . static::$object . " WHERE " . static::$primary . "=:id;";
         try {
@@ -42,13 +58,19 @@ class Model {
         }
     }
 
-        public static function save($data) {
+    /**
+     * Saves the input data into the database
+     *  
+     * @param  array $data The data to save
+     * @return boolean
+     */
+    public static function save($data) {
 
         $table_name = static::$object;
         $statements = array();
         foreach ($data as $key => $p) {
             if (isset($data[$key]) && !is_null($data[$key]) && strlen($p) > 0) {
-                $statements[$key] = $p;      
+                $statements[$key] = $p;
             }
         }
         $sql = "INSERT INTO {$table_name} (" . implode(',', array_keys($statements)) . ") VALUES (:" . implode(',:', array_keys($statements)) . ")";
@@ -60,15 +82,20 @@ class Model {
             if (Conf::getDebug()) {
                 echo $e->getMessage();
                 return false;
-            }
-            else {
+            } else {
                 echo 'De quoi un crash serveur ? j\'ai rien vu moi';
             }
             die();
         }
     }
-    
-     public static function update($data) {
+
+    /**
+     * Updates the database with the input data
+     *  
+     * @param  array $data The new data
+     * @return boolean
+     */
+    public static function update($data) {
         $table_name = static::$object;
         $primary = static::$primary;
         $statements = array();
@@ -90,10 +117,16 @@ class Model {
             if (Conf::getDebug()) {
                 echo $e->getMessage();
             }
+            return false;
         }
     }
 
-    //delete an $object
+    /**
+     * Deletes a object of a certain type by his id
+     *  
+     * @param  array $id The object's id
+     * @return boolean
+     */
     public static function delete($id) {
         $table_name = static::$object;
         $primary = static::$primary;
@@ -113,10 +146,11 @@ class Model {
             else {
                 echo 'De quoi un crash serveur ? j\'ai rien vu moi';
             }
-            die();
+            return false;
         }
     }
-    
+
 }
 
+//Initating the PDO object
 Model::Init();
