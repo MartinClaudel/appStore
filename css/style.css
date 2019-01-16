@@ -32,7 +32,7 @@ header{
     box-shadow: -1px 0px 8px 0px black;
     z-index: 9001;
     align-self:flex-end;
-    
+
 }
 
 header a{
@@ -86,26 +86,26 @@ footer{
 
 
 #app_detail a{
-	color: grey;
-	text-decoration: none;
-	font-size: 1.2em;
+    color: grey;
+    text-decoration: none;
+    font-size: 1.2em;
 }
 
 .app_summary{
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .app_summary .name{
-	font-weight: bold;
-	font-size: 1.2em;
-	display: flex;
-	align-items: center;
-	flex-direction: row;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .app_summary .OS{
-	font-size: 1.1em;
+    font-size: 1.1em;
 }
 
 #add_category{
@@ -192,7 +192,7 @@ footer{
 }
 
 .app_list>a span:nth-child(4){
-   
+
     position: absolute;
     left:50%;
 }
@@ -226,39 +226,39 @@ footer{
 }
 
 #app_edit>div{
-	height: 65vh;
-	overflow-y: scroll;
-        overflow-x: hidden;
-	display:flex;
-	flex-direction: column;
-	align-items: flex-start;
+    height: 65vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 #app_edit>span{
-	padding-top:10px;
+    padding-top:10px;
 }
 
 #create_actions{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #create_actions a{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-around;
-	color: grey;
-	font-size: 1.3em;
-	text-align: center;
-	text-decoration: none;
-	transition: all 0.3s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: grey;
+    font-size: 1.3em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
 #create_actions a:hover{
-	color:rgb(20,20,20);
+    color:rgb(20,20,20);
 }
 
 #adminboard img{
@@ -268,15 +268,15 @@ footer{
 
 
 #app_categories>div{
-	display:flex;
-	flex-direction: column;
+    display:flex;
+    flex-direction: column;
 }
 
 #app_categories>div{
-	display:flex;
-	align-items: center;
-	flex-wrap: wrap;
-	flex-direction: row;
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 #app_categories>span>i{
@@ -287,7 +287,7 @@ footer{
 
 .category_label{
 
-	display:flex;
+    display:flex;
 
 }
 
@@ -363,7 +363,7 @@ footer{
 }
 
 .form_description{
-	resize: none;
+    resize: none;
 }
 
 
@@ -387,23 +387,23 @@ footer{
 }
 
 @media all and (max-width: 736px) {
-        #sidebar{
+    #sidebar{
         width: 100vw;
         left: 0vw;
     }
 
 }
 
-    #sidebar #sidebar_controller{
-        z-index: 9004;
-        cursor:pointer;
-        position:absolute;
-        right:2vw;
-        top:9vh;
-        font-size:2.5em;
-        font-weight: bold;
-        padding:0;
-    }
+#sidebar #sidebar_controller{
+    z-index: 9004;
+    cursor:pointer;
+    position:absolute;
+    right:2vw;
+    top:9vh;
+    font-size:2.5em;
+    font-weight: bold;
+    padding:0;
+}
 
 #sidebar.offScreen{
     left: 100vw;
@@ -422,7 +422,6 @@ footer{
     justify-content: space-around;
     flex-wrap: wrap;
     position:relative;
-    top:6vh;
 }
 
 .app_list.store .app{
@@ -430,17 +429,20 @@ footer{
     display:flex;
     flex-direction: column;
     align-items: center;
-   border-radius: 5px;
-   -moz-box-shadow: 0 0 5px #000000;
-   -webkit-box-shadow: 0 0 5px #000000;
-   box-shadow: 0 0 5px #000000;
-   max-width: 150px;
-   height: 100%;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 5px #000000;
+    -webkit-box-shadow: 0 0 5px #000000;
+    box-shadow: 0 0 5px #000000;
+    max-width: 150px;
+    height: 100%;
 }
 
 .app_list.store a{
-    margin:3vw;
+    margin : 2vh 5vw 2vh 5vw;
     flex-grow:1;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 
@@ -449,6 +451,6 @@ footer{
 }
 
 .app_list.store .app img{
-   height:150px;
-   width:150px;
+    height:150px;
+    width:150px;
 }
